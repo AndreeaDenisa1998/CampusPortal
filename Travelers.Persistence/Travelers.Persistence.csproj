@@ -16,4 +16,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Centric\Travelers.entities\Travelers.entities.csproj" />
+  </ItemGroup>
+
 </Project>
