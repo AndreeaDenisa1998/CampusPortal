@@ -5,17 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Travelers.entities;
 
-public interface IUsersRepository
+namespace Travelers.persistance
 {
-	IEnumerable<User> GetAll();
 
-	Task<User> GetUserById(Guid idUsers);
+	public interface IUsersRepository
+	{
+		IEnumerable<User> GetAll();
 
-	Task Create(User user);
+		Task<User> GetUserById(Guid idUsers);
 
-	void Update(User users);
+		Task Create(User user);
 
-	void Delete(User user);
+		void Update(User users);
 
-	Task SaveChanges();
+		void Delete(User user);
+
+		Task SaveChanges();
+	}
 }

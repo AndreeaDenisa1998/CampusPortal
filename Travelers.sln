@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travelers.Persistence", "Travelers.Persistence\Travelers.Persistence.csproj", "{675B5692-3072-4E8D-8DBC-4E96DCCDA638}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travelers.Persistence", "Travelers.Persistence\Travelers.Persistence.csproj", "{675B5692-3072-4E8D-8DBC-4E96DCCDA638}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travelers.entities", "..\..\Centric\Travelers.entities\Travelers.entities.csproj", "{45E37D52-B05B-4185-92CB-6782F26FC5AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Presentation", "01.Presentation", "{B75A59B5-DD64-4840-A283-4425D0A4BEB8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travelers.api", "Travelers.api\Travelers.api.csproj", "{16E27E73-E84D-4424-A6D8-83AE90FC4561}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Business", "02.Business", "{33662743-B758-4F3B-A852-A4B187258CB7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travelers.Business", "Travelers.Business\Travelers.Business.csproj", "{AE10F323-B383-4A68-8A9F-CCEBD8137819}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +29,21 @@ Global
 		{45E37D52-B05B-4185-92CB-6782F26FC5AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45E37D52-B05B-4185-92CB-6782F26FC5AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45E37D52-B05B-4185-92CB-6782F26FC5AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E27E73-E84D-4424-A6D8-83AE90FC4561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E27E73-E84D-4424-A6D8-83AE90FC4561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E27E73-E84D-4424-A6D8-83AE90FC4561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E27E73-E84D-4424-A6D8-83AE90FC4561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE10F323-B383-4A68-8A9F-CCEBD8137819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE10F323-B383-4A68-8A9F-CCEBD8137819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE10F323-B383-4A68-8A9F-CCEBD8137819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE10F323-B383-4A68-8A9F-CCEBD8137819}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{16E27E73-E84D-4424-A6D8-83AE90FC4561} = {B75A59B5-DD64-4840-A283-4425D0A4BEB8}
+		{AE10F323-B383-4A68-8A9F-CCEBD8137819} = {33662743-B758-4F3B-A852-A4B187258CB7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EED4D240-9901-48DB-971E-06DA0FE91B40}

@@ -7,7 +7,7 @@ using Travelers.persistance;
 
 namespace Campus.Persistence
 {
-	public class ReviewRepository
+	public class ReviewRepository: IReviewRepository
     {
         private readonly TravelersContext context;
 

@@ -13,11 +13,12 @@ namespace Travelers.persistance
     {
         private readonly TravelersContext context;
 
-        public UsersRepository(TravelersContext context)
-        {
-            this.context = context;
-        }
-        public async Task Create(User user)
+		public UsersRepository(TravelersContext context)
+		{
+			this.context = context;
+		}
+
+		public async Task Create(User user)
         {
             await this.context.User.AddAsync(user);
         }
