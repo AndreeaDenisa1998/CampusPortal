@@ -19,6 +19,12 @@ namespace Travelers.Business.Travelers.Services.PostS
 			this.postRepository = postRepository;
 			this.mapper = mapper;
 		}
+		public IEnumerable<PostModel> GetAll()
+		{
+			var post = postRepository.GetAll();
+
+			return mapper.Map<IEnumerable<PostModel>>(post);
+		}
 		public async Task<PostModel> GetPostById(Guid id)
 		{
 			var posts = await postRepository.GetPostById(id);
@@ -26,13 +32,14 @@ namespace Travelers.Business.Travelers.Services.PostS
 		}
 		public async Task<PostModel> Create(CreatePostModel model)
 		{
-			var posts = this.mapper.Map<Post>(model);
-
+			var posts = this.mapper.Map<Post>(model); 
 			await this.postRepository.Create(posts);
 
 			await this.postRepository.SaveChanges();
 
 			return mapper.Map<PostModel>(posts);
+			
+			
 		}
 		public async Task Delete(Guid postId)
 		{

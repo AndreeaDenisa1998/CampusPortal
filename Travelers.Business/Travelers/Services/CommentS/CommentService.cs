@@ -26,7 +26,7 @@ namespace Travelers.Business.Travelers.Services.CommentS
             var comments = await commentRepository.GetCommentById(id);
             return mapper.Map<CommentModel>(comments);
         }
-        public async Task<CommentModel> Create(CreateModelComment model)
+        public async Task<CommentModel> Create(CreateCommentModel model)
         {
             var comment = this.mapper.Map<Comment>(model);
 
@@ -44,7 +44,7 @@ namespace Travelers.Business.Travelers.Services.CommentS
 
             await commentRepository.SaveChanges();
         }
-        public async Task Update(Guid commentId, CreateModelComment model)
+        public async Task Update(Guid commentId, CreateCommentModel model)
         {
             var comment = await commentRepository.GetCommentById(commentId);
 

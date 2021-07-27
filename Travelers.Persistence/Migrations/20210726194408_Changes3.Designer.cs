@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Travelers.persistance;
 
 namespace Travelers.Persistence.Migrations
 {
     [DbContext(typeof(TravelersContext))]
-    partial class TravelersContextModelSnapshot : ModelSnapshot
+    [Migration("20210726194408_Changes3")]
+    partial class Changes3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +26,7 @@ namespace Travelers.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("IdComments");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -43,8 +45,7 @@ namespace Travelers.Persistence.Migrations
                         .HasColumnName("NumberOfLikes");
 
                     b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("IdPosts");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -60,7 +61,7 @@ namespace Travelers.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("IdNotification");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -74,8 +75,7 @@ namespace Travelers.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("IdPosts");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -92,7 +92,7 @@ namespace Travelers.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("IdPosts");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -127,7 +127,7 @@ namespace Travelers.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("IdPosts");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -150,8 +150,7 @@ namespace Travelers.Persistence.Migrations
                         .HasColumnName("NumberOfStars");
 
                     b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("IdPosts");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 

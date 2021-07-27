@@ -10,8 +10,11 @@ namespace Campus.Persistence.Mappings
             modelBuilder.Entity<Review>(entity =>
             {
                 entity.Property(c => c.Id)
-                    .HasColumnName("IdPosts")
+                    .HasColumnName("Id")
                     .IsRequired();
+                entity.Property(c => c.PostId)
+	                .HasColumnName("IdPosts")
+	                .IsRequired();
                 entity.Property(c => c.Content)
                     .HasColumnName("Content")
                     .IsRequired();

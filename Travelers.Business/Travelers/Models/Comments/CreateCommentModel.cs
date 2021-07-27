@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Travelers.Business.Travelers.Models.Comments
 {
-    public class CommentModel
+    public class CreateCommentModel
     {
-        public Guid Id { get; set; }
-        public Guid IdUser { get; set; }
-        public Guid PostId { get; set; }
+	    public Guid IdUser { get; set; }
+	    public Guid PostId { get; set; }
         public string Content { get; set; }
         public int NumberOfLikes { get; set; }
         public DateTime Date { get; set; }
+
+
     }
 }

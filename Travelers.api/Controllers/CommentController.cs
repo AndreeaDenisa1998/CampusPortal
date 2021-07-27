@@ -9,7 +9,7 @@ using Travelers.Business.Travelers.Services.CommentS;
 
 namespace Travelers.api.Controllers
 {
-	[Route("api/comments")]
+	[Route("api/v1/comments")]
     [ApiController]
     public class CommentController : ControllerBase
     {
@@ -18,7 +18,14 @@ namespace Travelers.api.Controllers
         {
             this.commentService = commentService;
         }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
 
+	        var comment = commentService.GetAll();
+
+	        return Ok(comment);
+        }
         [HttpGet("{id}")]
 
         public async Task<IActionResult> Get([FromRoute] Guid id)
@@ -27,7 +34,7 @@ namespace Travelers.api.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateModelComment model)
+        public async Task<IActionResult> Create([FromBody] CreateCommentModel model)
         {
             var result = await commentService.Create(model);
             return Created(result.Id.ToString(), null);
@@ -39,7 +46,7 @@ namespace Travelers.api.Controllers
             return NoContent();
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] CreateModelComment model)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] CreateCommentModel model)
         {
             await commentService.Update(id, model);
             return NoContent();

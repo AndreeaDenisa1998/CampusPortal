@@ -8,8 +8,10 @@ namespace Travelers.Business.Travelers.Models.Notifications
 {
     public class CreateNotificationModel
     {
-        public string Context { get; set; }
+	    public Guid IdUser { get; set; }
+	    public Guid PostId { get; set; }
+        public string Content { get; set; }
 
-        public Guid IdUser { get; set; }
+       
     }
 }

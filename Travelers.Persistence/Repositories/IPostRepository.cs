@@ -9,6 +9,7 @@ namespace Travelers.persistance
 {
 	public interface IPostRepository
 	{
+		IEnumerable<Post> GetAll();
 		Task<Post> GetPostById(Guid id);
 		Task Create(Post post);
 		Task SaveChanges();

@@ -21,11 +21,15 @@ namespace Travelers.Business.Mappings
 			CreateMap<User, UsersModel>().ReverseMap();
 			CreateMap<User, CreateUsersModel>().ReverseMap();
 			CreateMap<Post, PostModel>().ReverseMap();
+			CreateMap<Post, CreatePostModel>().ReverseMap();
 			CreateMap<Comment, CommentModel>().ReverseMap();
+			CreateMap<Comment, CreateCommentModel>().ReverseMap();
 			CreateMap<Review, ReviewModel>().ReverseMap();
+			CreateMap<Review, CreateReviewModel>().ReverseMap();
 			CreateMap<Notification, NotificationModel>().ReverseMap();
+			CreateMap<Notification, CreateNotificationModel>().ReverseMap();
+
+			
 		}
-
-
 	}
 }

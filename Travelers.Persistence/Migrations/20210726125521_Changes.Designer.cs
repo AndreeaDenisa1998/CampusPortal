@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Travelers.persistance;
 
 namespace Travelers.Persistence.Migrations
 {
     [DbContext(typeof(TravelersContext))]
-    partial class TravelersContextModelSnapshot : ModelSnapshot
+    [Migration("20210726125521_Changes")]
+    partial class Changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,12 +21,27 @@ namespace Travelers.Persistence.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("NotificationUser", b =>
+                {
+                    b.Property<Guid>("NotificationsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UsersId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("NotificationsId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("NotificationUser");
+                });
+
             modelBuilder.Entity("Travelers.entities.Comment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("IdComments");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -35,22 +52,21 @@ namespace Travelers.Persistence.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("DateAndTime");
 
-                    b.Property<Guid>("IdUser")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("NumberOfLikes")
                         .HasColumnType("int")
                         .HasColumnName("NumberOfLikes");
 
                     b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("IdPosts");
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdUser");
-
                     b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comment");
                 });
@@ -60,7 +76,7 @@ namespace Travelers.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("IdNotification");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -70,16 +86,10 @@ namespace Travelers.Persistence.Migrations
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("IdUser")
+                    b.Property<Guid>("PostId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("IdPosts");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("IdUser");
 
                     b.HasIndex("PostId")
                         .IsUnique();
@@ -92,7 +102,7 @@ namespace Travelers.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("IdPosts");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -103,9 +113,6 @@ namespace Travelers.Persistence.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("DateAndTime");
 
-                    b.Property<Guid>("IdUser")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("NumberOfLikes")
                         .HasColumnType("int")
                         .HasColumnName("NumberOfLikes");
@@ -115,9 +122,12 @@ namespace Travelers.Persistence.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Type");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("IdUser");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Post");
                 });
@@ -127,7 +137,7 @@ namespace Travelers.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("IdPosts");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -138,9 +148,6 @@ namespace Travelers.Persistence.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("Date");
 
-                    b.Property<Guid>("IdUser")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("NumberOfLikes")
                         .HasColumnType("int")
                         .HasColumnName("numberOfLikes");
@@ -150,14 +157,16 @@ namespace Travelers.Persistence.Migrations
                         .HasColumnName("NumberOfStars");
 
                     b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("IdPosts");
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdUser");
-
                     b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Review");
                 });
@@ -196,18 +205,33 @@ namespace Travelers.Persistence.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("Travelers.entities.Comment", b =>
+            modelBuilder.Entity("NotificationUser", b =>
                 {
-                    b.HasOne("Travelers.entities.User", "Users")
-                        .WithMany("Comments")
-                        .HasForeignKey("IdUser")
+                    b.HasOne("Travelers.entities.Notification", null)
+                        .WithMany()
+                        .HasForeignKey("NotificationsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Travelers.entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Travelers.entities.Comment", b =>
+                {
                     b.HasOne("Travelers.entities.Post", "Posts")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Travelers.entities.User", "Users")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Posts");
@@ -217,12 +241,6 @@ namespace Travelers.Persistence.Migrations
 
             modelBuilder.Entity("Travelers.entities.Notification", b =>
                 {
-                    b.HasOne("Travelers.entities.User", "User")
-                        .WithMany("Notifications")
-                        .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Travelers.entities.Post", "Post")
                         .WithOne("Notification")
                         .HasForeignKey("Travelers.entities.Notification", "PostId")
@@ -230,15 +248,13 @@ namespace Travelers.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Post");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Travelers.entities.Post", b =>
                 {
                     b.HasOne("Travelers.entities.User", "User")
                         .WithMany("Posts")
-                        .HasForeignKey("IdUser")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -247,16 +263,16 @@ namespace Travelers.Persistence.Migrations
 
             modelBuilder.Entity("Travelers.entities.Review", b =>
                 {
-                    b.HasOne("Travelers.entities.User", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Travelers.entities.Post", "Post")
                         .WithMany("Reviews")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Travelers.entities.User", "User")
+                        .WithMany("Reviews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Post");
@@ -276,8 +292,6 @@ namespace Travelers.Persistence.Migrations
             modelBuilder.Entity("Travelers.entities.User", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Notifications");
 
                     b.Navigation("Posts");
 

@@ -9,6 +9,7 @@ namespace Travelers.Business.Travelers.Services.ReviewS
 {
     public interface IReviewService
     {
+	    IEnumerable<ReviewModel> GetAll();
         Task<ReviewModel> GetById(Guid id);
         Task<ReviewModel> Create(CreateReviewModel model);
 

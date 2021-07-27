@@ -11,7 +11,7 @@ using Travelers.Business.Travelers.Services.NotificationS;
 
 namespace Travelers.api.Controllers
 {
-	[Route("api/notifications")]
+	[Route("api/v1/notifications")]
     [ApiController]
     public class NotificationController : ControllerBase
     {
@@ -20,7 +20,14 @@ namespace Travelers.api.Controllers
         {
             this.notificationService = notificationService;
         }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
 
+	        var notification = notificationService.GetAll();
+
+	        return Ok(notification);
+        }
         [HttpGet("{id}")]
 
         public async Task<IActionResult> Get([FromRoute] Guid id)

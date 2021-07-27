@@ -15,7 +15,7 @@ namespace Travelers.persistance.Mappings
 			modelBuilder.Entity<Post>(entity =>
 			{
 				entity.Property(c => c.Id)
-					.HasColumnName("IdPosts")
+					.HasColumnName("Id")
 					.IsRequired();
 				entity.Property(c => c.Date)
 					.HasColumnName("DateAndTime")

@@ -19,6 +19,12 @@ namespace Travelers.Business.Travelers.Services.NotificationS
             this.notificationRepository = notificationRepository;
             this.mapper = mapper;
         }
+        public IEnumerable<NotificationModel> GetAll()
+        {
+	        var notifications = notificationRepository.GetAll();
+
+	        return mapper.Map<IEnumerable<NotificationModel>>(notifications);
+        }
         public async Task<NotificationModel> GetById(Guid id)
         {
             var notification = await notificationRepository.GetNotificationById(id);

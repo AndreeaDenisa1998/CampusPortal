@@ -17,6 +17,10 @@ namespace Travelers.persistance
 		{
 			this.context = context;
 		}
+		public IEnumerable<Post> GetAll()
+		{
+			return context.Post;
+		}
 		public async Task<Post> GetPostById(Guid id)
 		{
 			return await context.Post

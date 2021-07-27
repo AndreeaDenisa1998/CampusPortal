@@ -15,7 +15,10 @@ namespace Travelers.persistance.Mappings
 			modelBuilder.Entity<Comment>(entity =>
 			{
 				entity.Property(c => c.Id)
-					.HasColumnName("IdComments")
+					.HasColumnName("Id")
+					.IsRequired();
+				entity.Property(c => c.PostId)
+					.HasColumnName("IdPosts")
 					.IsRequired();
 				entity.Property(c => c.Date)
 					.HasColumnName("DateAndTime")

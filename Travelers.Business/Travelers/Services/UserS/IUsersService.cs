@@ -11,12 +11,12 @@ namespace Travelers.Business.Travelers.Services.UserS
     {
         IEnumerable<UsersModel> GetAll();
 
-        Task<UsersModel> GetUserById(Guid idUsers);
+        Task<UsersModel> GetUserById(Guid Id);
 
         Task<UsersModel> Create(CreateUsersModel model);
 
-        Task Delete(Guid idUsers);
+        Task Delete(Guid Id);
 
-        Task Update(Guid idUsers, CreateUsersModel model);
+        Task Update(Guid Id, CreateUsersModel model);
     }
 }

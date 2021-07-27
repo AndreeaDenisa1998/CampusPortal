@@ -9,6 +9,7 @@ namespace Travelers.Business.Travelers.Services.NotificationS
 {
     public interface INotificationService
     {
+	    IEnumerable<NotificationModel> GetAll();
         Task<NotificationModel> GetById(Guid id);
         Task<NotificationModel> Create(CreateNotificationModel model);
 

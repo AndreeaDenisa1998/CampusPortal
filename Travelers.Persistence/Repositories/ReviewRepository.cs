@@ -15,6 +15,10 @@ namespace Campus.Persistence
         {
             this.context = context;
         }
+        public IEnumerable<Review> GetAll()
+        {
+	        return context.Review;
+        }
         public async Task<Review> GetReviewById(Guid id)
         {
             return await context.Review

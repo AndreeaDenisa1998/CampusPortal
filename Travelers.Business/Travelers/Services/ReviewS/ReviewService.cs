@@ -20,6 +20,12 @@ namespace Travelers.Business.Travelers.Services.ReviewS
             this.reviewRepository = reviewRepository;
             this.mapper = mapper;
         }
+        public IEnumerable<ReviewModel> GetAll()
+        {
+	        var review = reviewRepository.GetAll();
+
+	        return mapper.Map<IEnumerable<ReviewModel>>(review);
+        }
         public async Task<ReviewModel> GetById(Guid id)
         {
             var review = await reviewRepository.GetReviewById(id);

@@ -9,7 +9,7 @@ using Travelers.Business.Travelers.Services.UserS;
 
 namespace Travelers.api.Controllers
 {
-	[Route("api/users")]
+	[Route("api/v1/users")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -18,6 +18,17 @@ namespace Travelers.api.Controllers
         {
             this.usersService = usersService;
         }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+
+	        var users = usersService.GetAll();
+
+	        return Ok(users);
+        }
+
+
 
         [HttpGet("{id}")]
 
@@ -30,7 +41,7 @@ namespace Travelers.api.Controllers
         public async Task<IActionResult> Create([FromBody] CreateUsersModel model)
         {
             var result = await usersService.Create(model);
-            return Created(result.IdUsers.ToString(), null);
+            return Created(result.Id.ToString(), null);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)

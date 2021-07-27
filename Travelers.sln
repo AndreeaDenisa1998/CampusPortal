@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Business", "02.Business"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travelers.Business", "Travelers.Business\Travelers.Business.csproj", "{AE10F323-B383-4A68-8A9F-CCEBD8137819}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Persistence", "03.Persistence", "{6E12FA97-A4DE-464B-94BC-669B0D8D7E7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Tests", "04.Tests", "{7685ABFF-78FA-4C2E-B6C6-3748DB9A26A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{675B5692-3072-4E8D-8DBC-4E96DCCDA638} = {6E12FA97-A4DE-464B-94BC-669B0D8D7E7F}
+		{45E37D52-B05B-4185-92CB-6782F26FC5AC} = {6E12FA97-A4DE-464B-94BC-669B0D8D7E7F}
 		{16E27E73-E84D-4424-A6D8-83AE90FC4561} = {B75A59B5-DD64-4840-A283-4425D0A4BEB8}
 		{AE10F323-B383-4A68-8A9F-CCEBD8137819} = {33662743-B758-4F3B-A852-A4B187258CB7}
 	EndGlobalSection

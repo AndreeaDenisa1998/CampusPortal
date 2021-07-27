@@ -10,9 +10,11 @@ namespace Campus.Persistence.Mappings
                 modelBuilder.Entity<Notification>(entity =>
                 {
                     entity.Property(c => c.Id)
-                        .HasColumnName("IdNotification")
+                        .HasColumnName("Id")
                         .IsRequired();
-
+                    entity.Property(c => c.PostId)
+	                    .HasColumnName("IdPosts")
+	                    .IsRequired();
                     entity.Property(c => c.Content)
                         .HasColumnName("Content")
                         .IsRequired();

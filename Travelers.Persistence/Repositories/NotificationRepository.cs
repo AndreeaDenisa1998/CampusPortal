@@ -15,6 +15,10 @@ namespace Campus.Persistence
         {
             this.context = context;
         }
+        public IEnumerable<Notification> GetAll()
+        {
+	        return context.Notification;
+        }
         public async Task<Notification> GetNotificationById(Guid id)
         {
             return await context.Notification

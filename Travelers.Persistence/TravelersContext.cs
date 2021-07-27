@@ -115,10 +115,10 @@ namespace Travelers.persistance
         {
 
         }
-        /*public TravelersContext(DbContextOptions<TravelersContext> options) : base(options)
+        public TravelersContext(DbContextOptions<TravelersContext> options) : base(options)
         {
             Database.Migrate();
-        }*/
+        }
         public DbSet<User> User { get; set; }
         public DbSet<Post> Post { get; set; }
         public DbSet<Comment> Comment { get; set; }

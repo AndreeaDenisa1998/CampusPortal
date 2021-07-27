@@ -9,7 +9,7 @@ using Travelers.Business.Travelers.Services.ReviewS;
 
 namespace Travelers.api.Controllers
 {
-	[Route("api/reviews")]
+	[Route("api/v1/reviews")]
 
     [ApiController]
     public class ReviewsController : ControllerBase
@@ -20,7 +20,14 @@ namespace Travelers.api.Controllers
         {
             this.reviewService = reviewService;
         }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
 
+	        var reviews = reviewService.GetAll();
+
+	        return Ok(reviews);
+        }
         [HttpGet("{id}")]
 
         public async Task<IActionResult> Get([FromRoute] Guid id)

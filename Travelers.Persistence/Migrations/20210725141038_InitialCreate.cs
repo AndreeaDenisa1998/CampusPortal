@@ -29,7 +29,7 @@ namespace Travelers.Persistence.Migrations
                     IdPosts = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateAndTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    NumberOfLikes = table.Column<int>(type: "int", nullable: false),
+                    NumberOfLikes = table.Column<int>(type: "int", nullable: true),
                     Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)

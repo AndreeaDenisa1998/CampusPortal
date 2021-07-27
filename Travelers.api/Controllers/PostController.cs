@@ -9,7 +9,7 @@ using Travelers.Business.Travelers.Services.PostS;
 
 namespace Travelers.api.Controllers
 {
-	[Route("api/posts")]
+	[Route("api/v1/posts")]
 	[ApiController]
 	public class PostController : ControllerBase
 	{
@@ -18,8 +18,15 @@ namespace Travelers.api.Controllers
 		{
 			this.postService = postService;
 		}
-		
-		
+
+		[HttpGet]
+		public IActionResult GetAll()
+		{
+
+			var posts = postService.GetAll();
+
+			return Ok(posts);
+		}
 		// GET api/<PostsController>/5
 		[HttpGet("{id}")]
 		public async Task<IActionResult> Get([FromRoute] Guid id)

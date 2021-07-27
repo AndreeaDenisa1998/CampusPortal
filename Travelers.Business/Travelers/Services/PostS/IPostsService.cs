@@ -9,6 +9,7 @@ namespace Travelers.Business.Travelers.Services.PostS
 {
 	public interface IPostsService
     {
+	    IEnumerable<PostModel> GetAll();
         Task<PostModel> GetPostById(Guid id);
         Task<PostModel> Create(CreatePostModel model);
 

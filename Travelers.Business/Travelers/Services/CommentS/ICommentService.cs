@@ -11,10 +11,10 @@ namespace Travelers.Business.Travelers.Services.CommentS
     {
 	    IEnumerable<CommentModel> GetAll();
         Task<CommentModel> GetById(Guid id);
-        Task<CommentModel> Create(CreateModelComment model);
+        Task<CommentModel> Create(CreateCommentModel model);
         
         Task Delete(Guid commentId);
 
-        Task Update(Guid commentId, CreateModelComment model);
+        Task Update(Guid commentId, CreateCommentModel model);
     }
 }

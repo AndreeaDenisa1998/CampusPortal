@@ -35,21 +35,22 @@ namespace Campus.Persistence.Mappings
 
                 entity.HasMany(s => s.Posts)
                     .WithOne(p => p.User)
-                    .HasForeignKey(s => s.UserId).OnDelete(DeleteBehavior.Cascade);
+                    .HasForeignKey(s => s.IdUser).OnDelete(DeleteBehavior.Cascade);
 
 
                 entity.HasMany(u => u.Comments)
 	                .WithOne(a => a.Users)
-	                .HasForeignKey(u => u.UserId).OnDelete(DeleteBehavior.Cascade);
+	                .HasForeignKey(u => u.IdUser).OnDelete(DeleteBehavior.Cascade);
 
 
                 entity.HasMany(u => u.Reviews)
                     .WithOne(r => r.User)
-                    .HasForeignKey(u => u.UserId).OnDelete(DeleteBehavior.Cascade);
+                    .HasForeignKey(u => u.IdUser).OnDelete(DeleteBehavior.Cascade);
 
 
                 entity.HasMany(u => u.Notifications)
-	                .WithMany(t => t.Users);
+	                .WithOne(t => t.User)
+	                .HasForeignKey(i => i.IdUser).OnDelete(DeleteBehavior.Cascade);
             });
         }
     }
