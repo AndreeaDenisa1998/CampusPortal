@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Travelers.Business.Travelers.Models.Posts;
 using Travelers.Business.Travelers.Services.PostS;
+using Travelers.entities;
 
 namespace Travelers.api.Controllers
 {
@@ -32,16 +33,27 @@ namespace Travelers.api.Controllers
 		public async Task<IActionResult> Get([FromRoute] Guid id)
 		{
 			var result = await postService.GetPostById(id);
-			return Ok(result);
+			if (result != null)
+			{
+				return Ok(result);
+			}
+
+			return BadRequest();
 		}
 
 		// POST api/<PostsController>
 		[HttpPost]
 		public async Task<IActionResult> Create([FromBody] CreatePostModel model)
 		{
-			var result = await postService.Create(model);
-
-			return Created(result.Id.ToString(), null);
+			try
+			{
+				var result = await postService.Create(model);
+				return Created(result.Id.ToString(), null);
+			}
+			catch(Exception exception)
+			{
+				throw exception;
+			}
 		}
 
 		// PUT api/<PostsController>/5
@@ -60,5 +72,17 @@ namespace Travelers.api.Controllers
 			return NoContent();
 		}
 
+		[HttpGet("{postId}/comments")]
+		public async Task<IActionResult> GetComments([FromRoute] Guid postId)
+		{
+			return Ok(await postService.GetComments(postId));
+			
+		}
+		[HttpGet("{postId}/reviews")]
+		public async Task<IActionResult> GetReviews([FromRoute] Guid postId)
+		{
+			return Ok(await postService.GetReviews(postId));
+
+		}
 	}
 }

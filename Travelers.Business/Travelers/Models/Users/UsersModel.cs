@@ -15,5 +15,7 @@ namespace Travelers.Business.Travelers.Models.Users
 
         public string Type { get; set; }
 
+        public string PasswordHash { get; set; }
+
     }
 }

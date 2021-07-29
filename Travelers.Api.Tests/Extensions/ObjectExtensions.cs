@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+namespace Travelers.Api.Tests.Extensions
+{
+	internal static class ObjectExtensions
+	{
+		public static StringContent ToStringContent(this object data)
+		{
+			var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+			content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+			return content;
+		}
+	}
+}

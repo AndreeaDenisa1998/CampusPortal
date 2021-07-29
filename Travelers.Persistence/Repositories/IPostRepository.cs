@@ -15,5 +15,8 @@ namespace Travelers.persistance
 		Task SaveChanges();
 		void Delete(Post post);
 		void Update(Post post);
+		Task<IEnumerable<Comment>> GetComments(Guid postId);
+
+		Task<IEnumerable<Review>> GetReviews(Guid postId);
 	}
 }

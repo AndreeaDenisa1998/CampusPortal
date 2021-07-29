@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Campus.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Travelers.entities;
 
 namespace Travelers.persistance
@@ -23,8 +25,9 @@ namespace Travelers.persistance
 		}
 		public async Task<Post> GetPostById(Guid id)
 		{
-			return await context.Post
-				.FirstAsync(s => s.Id == id);
+			var result = await context.Post.FirstAsync(s => s.Id == id);
+			//		var res = await context.Post.FindAsync(id);
+			return result;
 		}
 		public void Delete(Post post)
 		{
@@ -38,6 +41,17 @@ namespace Travelers.persistance
 		{
 			this.context.Post.Update(post);
 		}
+
+		public async Task<IEnumerable<Comment>> GetComments(Guid postId)
+		{
+			return await context.Comment.Where(x => x.PostId == postId).ToArrayAsync();
+		}
+
+		public async Task<IEnumerable<Review>> GetReviews(Guid postId)
+		{
+			return await context.Review.Where(x => x.PostId == postId).ToArrayAsync();
+		}
+
 		public async Task SaveChanges()
 		{
 			await this.context.SaveChangesAsync();

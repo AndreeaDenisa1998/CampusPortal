@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Travelers.Business.Travelers.Models.Comments;
 using Travelers.Business.Travelers.Models.Posts;
+using Travelers.Business.Travelers.Models.Reviews;
 using Travelers.entities;
 using Travelers.persistance;
 
@@ -27,8 +29,16 @@ namespace Travelers.Business.Travelers.Services.PostS
 		}
 		public async Task<PostModel> GetPostById(Guid id)
 		{
-			var posts = await postRepository.GetPostById(id);
-			return mapper.Map<PostModel>(posts);
+			try
+			{
+				var posts = await postRepository.GetPostById(id);
+				return mapper.Map<PostModel>(posts);
+			}
+			catch (InvalidOperationException ex)
+			{
+				return null;
+			}
+		
 		}
 		public async Task<PostModel> Create(CreatePostModel model)
 		{
@@ -58,6 +68,16 @@ namespace Travelers.Business.Travelers.Services.PostS
 			postRepository.Update(posts);
 
 			await postRepository.SaveChanges();
+		}
+
+		public async Task<IEnumerable<CommentModel>> GetComments(Guid postId)
+		{
+			return mapper.Map<IEnumerable<CommentModel>>(await postRepository.GetComments(postId));
+		}
+
+		public async Task<IEnumerable<ReviewModel>> GetReviews(Guid postId)
+		{
+			return mapper.Map<IEnumerable<ReviewModel>>(await postRepository.GetReviews(postId));
 		}
 	}
 }

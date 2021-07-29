@@ -11,37 +11,23 @@ namespace Travelers.entities
     {
 	    public Review()
 	    {
-		    
 	    }
-        public Review(Guid idUser,Guid idPosts,string content, int numberOfStars, DateTime date, int numberOfLikes) : base()
-        {
-	        IdPosts = idPosts;
-	        IdUsers = idUser;
-            Content = content;
-            NumberOfLikes = numberOfLikes;
-            Date = date;
-            NumberOfStars = numberOfStars;
 
-        }
-        //[Required, MaxLength(1000)]
-        public string Content { get; private set; }
-
-        //[Required]
-        public int NumberOfStars { get; private set; }
-
-        //[Required]
-        public DateTime Date { get; private set; }
-
-        //[Required]
-        public int NumberOfLikes { get; private set; }
+	    public string Content { get; set; }
         
-        public Guid IdUsers { get; private set; }
+        public int NumberOfStars { get; set; }
         
-        public Guid IdPosts { get; private set; }
+        public DateTime Date { get; set; }
+        
+        public int NumberOfLikes { get; set; }
+        
+        public Guid IdUser { get; set; }
+        
+        public Guid PostId { get; set; }
 
-        public Users Users { get; set; }
+        public User User { get; set; }
 
-        public Posts Posts { get; set; }
+        public Post Post { get; set; }
 
     }
 }
