@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Travelers.entities;
+using Travelers.Entities;
 using Travelers.persistance;
 using Travelers.Persistence;
 

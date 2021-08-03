@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Campus.Persistence;
 using Travelers.Business.Travelers.Models.Notifications;
-using Travelers.entities;
+using Travelers.Entities;
 
 namespace Travelers.Business.Travelers.Services.NotificationS
 {

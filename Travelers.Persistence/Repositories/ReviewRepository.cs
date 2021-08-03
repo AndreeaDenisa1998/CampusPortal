@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Travelers.entities;
+using Travelers.Entities;
 using Travelers.persistance;
 
 namespace Campus.Persistence

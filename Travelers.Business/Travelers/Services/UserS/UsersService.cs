@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Travelers.Business.Travelers.Models.Users;
-using Travelers.entities;
+using Travelers.Entities;
 using Travelers.persistance;
 
 namespace Travelers.Business.Travelers.Services.UserS

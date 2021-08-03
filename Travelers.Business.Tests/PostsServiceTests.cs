@@ -10,7 +10,7 @@ using Travelers.Business.Travelers.Models.Posts;
 using Travelers.Business.Travelers.Models.Users;
 using Travelers.Business.Travelers.Services.PostS;
 using Travelers.Business.Travelers.Services.UserS;
-using Travelers.entities;
+using Travelers.Entities;
 using Travelers.persistance;
 using Xunit;
 

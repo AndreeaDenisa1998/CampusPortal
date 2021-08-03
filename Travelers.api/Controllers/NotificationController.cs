@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Travelers.Business.Travelers.Models.Comments;
 using Travelers.Business.Travelers.Models.Notifications;
-using Travelers.Business.Travelers.Services.CommentS;
 using Travelers.Business.Travelers.Services.NotificationS;
 
 namespace Travelers.api.Controllers

@@ -7,7 +7,7 @@ using AutoMapper;
 using Travelers.Business.Travelers.Models.Comments;
 using Travelers.Business.Travelers.Models.Posts;
 using Travelers.Business.Travelers.Models.Reviews;
-using Travelers.entities;
+using Travelers.Entities;
 using Travelers.persistance;
 
 namespace Travelers.Business.Travelers.Services.PostS
@@ -29,16 +29,9 @@ namespace Travelers.Business.Travelers.Services.PostS
 		}
 		public async Task<PostModel> GetPostById(Guid id)
 		{
-			try
-			{
 				var posts = await postRepository.GetPostById(id);
 				return mapper.Map<PostModel>(posts);
-			}
-			catch (InvalidOperationException ex)
-			{
-				return null;
-			}
-		
+
 		}
 		public async Task<PostModel> Create(CreatePostModel model)
 		{

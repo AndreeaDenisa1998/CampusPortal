@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Travelers.entities;
+using Travelers.Entities;
 
 namespace Campus.Persistence
 {

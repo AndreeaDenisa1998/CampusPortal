@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Campus.Persistence;
 using FluentAssertions;
 using Moq;
 using Travelers.Business.Travelers.Models.Notifications;
-using Travelers.Business.Travelers.Models.Users;
 using Travelers.Business.Travelers.Services.NotificationS;
-using Travelers.Business.Travelers.Services.UserS;
-using Travelers.entities;
-using Travelers.persistance;
+using Travelers.Entities;
 using Xunit;
 
 namespace Travelers.Business.Tests
 {
-	public class NotificationsServiceTests:IDisposable
+	public class NotificationsServiceTests : IDisposable
 	{
 		private readonly MockRepository mockNotificationRepository;
 		private readonly Mock<INotificationRepository> notificationRepositoryMock;
@@ -50,7 +46,7 @@ namespace Travelers.Business.Tests
 				IdUser = notification.IdUser,
 				PostId = notification.PostId,
 				Content = notification.Content,
-				
+
 			};
 
 			this.notificationRepositoryMock
@@ -73,21 +69,23 @@ namespace Travelers.Business.Tests
 		public void When_GetAll_IsCalled_Expect_GetAllFromNotificationRepositoryToBeInvoked_And_MappedResponseToBeReturned()
 		{
 			//Arrange
-			var notifications = new List<Notification>();
-			notifications.Add(new Notification()
+			var notifications = new List<Notification>
 			{
-				Id = Guid.NewGuid(),
-				IdUser = Guid.NewGuid(),
-				PostId = Guid.NewGuid(),
-				Content = "Content-getAll",
-			});
-			notifications.Add(new Notification()
-			{
-				Id = Guid.NewGuid(),
-				IdUser = Guid.NewGuid(),
-				PostId = Guid.NewGuid(),
-				Content = "Content2-getAll",
-			});
+				new Notification()
+				{
+					Id = Guid.NewGuid(),
+					IdUser = Guid.NewGuid(),
+					PostId = Guid.NewGuid(),
+					Content = "Content-getAll",
+				},
+				new Notification()
+				{
+					Id = Guid.NewGuid(),
+					IdUser = Guid.NewGuid(),
+					PostId = Guid.NewGuid(),
+					Content = "Content2-getAll",
+				}
+			};
 
 			var result = notifications.Select(n => new NotificationModel()
 			{
@@ -137,7 +135,7 @@ namespace Travelers.Business.Tests
 				IdUser = notification.IdUser,
 				PostId = notification.PostId,
 				Content = notification.Content,
-				
+
 			};
 
 			mapperNotificationMock

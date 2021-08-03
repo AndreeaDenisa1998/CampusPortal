@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Travelers.entities;
+using Travelers.Entities;
 
 namespace Campus.Persistence.Mappings
 {

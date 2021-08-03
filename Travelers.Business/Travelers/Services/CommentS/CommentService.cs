@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Travelers.Business.Travelers.Models.Comments;
 using Travelers.Business.Travelers.Models.Users;
-using Travelers.entities;
+using Travelers.Entities;
 using Travelers.Persistence;
 
 namespace Travelers.Business.Travelers.Services.CommentS

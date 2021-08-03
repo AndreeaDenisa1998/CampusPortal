@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using Travelers.api;
 using Travelers.Api.Tests.Extensions;
-using Travelers.Business.Travelers.Models.Comments;
 using Travelers.Business.Travelers.Models.Posts;
 using Travelers.Business.Travelers.Models.Reviews;
 using Travelers.Business.Travelers.Models.Users;

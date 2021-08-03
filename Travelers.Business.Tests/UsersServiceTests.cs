@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using FluentAssertions;
 using Moq;
-using Travelers.Business.Travelers.Models.Comments;
 using Travelers.Business.Travelers.Models.Users;
-using Travelers.Business.Travelers.Services.CommentS;
 using Travelers.Business.Travelers.Services.UserS;
-using Travelers.entities;
+using Travelers.Entities;
 using Travelers.persistance;
-using Travelers.Persistence;
 using Xunit;
 
 namespace Travelers.Business.Tests

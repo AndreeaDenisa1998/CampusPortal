@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Travelers.Business.Travelers.Models.Posts;
 using Travelers.Business.Travelers.Services.PostS;
-using Travelers.entities;
 
 namespace Travelers.api.Controllers
 {
@@ -45,15 +41,9 @@ namespace Travelers.api.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Create([FromBody] CreatePostModel model)
 		{
-			try
-			{
+		
 				var result = await postService.Create(model);
 				return Created(result.Id.ToString(), null);
-			}
-			catch(Exception exception)
-			{
-				throw exception;
-			}
 		}
 
 		// PUT api/<PostsController>/5

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Campus.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Travelers.entities;
+using Travelers.Entities;
 
 namespace Travelers.persistance
 {

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
@@ -74,7 +71,7 @@ namespace Travelers.Api.Tests.ControllersTests
 		[Fact]
 		public async void Given_PostDoesNotExist_When_GetById_Expect_BadRequestResponse()
 		{
-			var id = Guid.NewGuid();
+			var id = "627d9a9b-e3a4-4cfa-908e";  
 
 			var response = await Client.GetAsync($@"api/v1/posts/{id}");
 
@@ -84,7 +81,7 @@ namespace Travelers.Api.Tests.ControllersTests
 		[Fact]
 		public async void When_GetPost_Expect_ResponseShouldBeSuccessStatusCode()
 		{
-			var id = "F7547EA7-328A-4C72-B737-0C2761CB3E2B";
+			var id = "627d9a9b-e3a4-4cfa-908e-1673be981c67";
 			var result = await Client.GetAsync($@"/api/v1/posts/{id}");
 
 			Assert.True(result.IsSuccessStatusCode);

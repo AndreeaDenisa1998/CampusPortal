@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Campus.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Travelers.entities;
+using Travelers.Entities;
 
 namespace Travelers.persistance
 {
